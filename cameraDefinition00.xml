@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mavlinkcamera>
+  <definition version="0">
+    <model>T100</model>
+    <vendor>Foo Industries</vendor>
+  </definition>
+  <parameters>
+    <!-- MENU IMAGE/CAPTURE -->
+    <parameter name="IMG_RAD_TIFF" type="bool" default="0">
+      <description>Take radiometric TIFF</description>
+    </parameter>
+    <parameter name="IMG_RAD_JPEG" type="bool" default="1">
+      <description>Take radiometric JPEG</description>
+    </parameter>
+    <parameter name="IMG_IR_SUPER" type="uint8" default="0">
+      <description>Image IR superresolution</description>
+      <options>
+        <option name="Off" value="0" />
+        <option name="4 frames" value="4" />
+        <option name="8 frames" value="8" />
+        <option name="16 frames" value="16" />
+        <option name="32 frames" value="32" />
+      </options>
+    </parameter>
+    <parameter name="IMG_SCREEN" type="bool" default="0">
+      <description>Take screenshot image</description>
+    </parameter>
+    <parameter name="IMG_VIS" type="bool" default="0">
+      <description>Take visible image</description>
+    </parameter>
+    <parameter name="SAVE_TO" type="uint8" default="1">
+      <description>Images save to</description>
+      <options>
+        <option name="SSD" value="0" />
+        <option name="SD card" value="1" />
+        <option name="FLASH drive" value="2" />
+      </options>
+    </parameter>
+    <parameter name="VID_VIS" type="bool" default="1">
+      <description>Record visible</description>
+    </parameter>
+    <parameter name="VID_RAD" type="uint8" default="1">
+      <description>Record thermal video</description>
+      <options>
+        <option name="OFF" value="0" />
+        <option name="Radiometric sequence (*.seq)" value="1" />
+        <option name="Encoded video (*.mp4)" value="2" />
+      </options>
+    </parameter>
+    <parameter name="RANGE_TYPE" type="uint8" default="0">
+      <description>Range mode</description>
+      <updates>
+        <update>RANGE_MIN</update>
+        <update>RANGE_MAX</update>
+        <update>RANGE_WINDOW</update>
+        <update>RANGE_CENTER</update>
+      </updates>
+      <options>
+        <option name="Automatic" value="0">
+          <exclusions>
+            <exclude>RANGE_MIN</exclude>
+            <exclude>RANGE_MAX</exclude>
+            <exclude>RANGE_WINDOW</exclude>
+            <exclude>RANGE_CENTER</exclude>
+          </exclusions>
+        </option>
+        <option name="Manual" value="1">
+          <exclusions>
+            <exclude>RANGE_WINDOW</exclude>
+            <exclude>RANGE_CENTER</exclude>
+          </exclusions>
+        </option>
+        <option name="SPAN" value="2">
+          <exclusions>
+            <exclude>RANGE_WINDOW</exclude>
+            <exclude>RANGE_CENTER</exclude>
+          </exclusions>
+        </option>
+      </options>
+    </parameter>
+    <parameter name="MAIN_CAM" type="uint8" default="0">
+      <description>Main camera</description>
+      <options>
+        <option name="Thermo" value="0" />
+        <option name="Visible" value="1" />
+      </options>
+    </parameter>
+    <parameter name="LAYOUT_MAIN" type="uint8" default="0">
+      <description>Display layout</description>
+      <options>
+        <option name="Inspection" value="0" />
+        <option name="Security" value="1" />
+        <option name="Fullscreen" value="2" />
+        <option name="PiP fusion" value="3">
+          <exclusions>
+            <exclude>LOCK_ZOOM</exclude>
+            <exclude>ZOOM_THERMO_I</exclude>
+            <exclude>MAIN_CAM</exclude>
+          </exclusions>
+        </option>
+      </options>
+    </parameter>
+    <parameter name="LOCK_ZOOM" type="bool" default="1">
+      <description>Zoom visible and thermal camera simultaneously</description>
+      <updates>
+        <update>ZOOM_THERMO_I</update>
+        <update>ZOOM_VISIBLE_I</update>
+      </updates>
+    </parameter>
+    <parameter name="ZOOM_THERMO_I" type="uint8" default="0">
+      <description>Zoom thermal camera</description>
+      <updates>
+        <update>ZOOM_THERMO_I</update>
+      </updates>
+      <options>
+        <option name="1.0" value="0" />
+        <option name="1.2" value="1" />
+        <option name="1.6" value="2" />
+        <option name="2.0" value="3" />
+        <option name="3.0" value="4" />
+        <option name="4.0" value="5" />
+        <option name="5.0" value="6" />
+        <option name="6.0" value="7" />
+        <option name="8.0" value="8" />
+        <option name="10.0" value="9" />
+        <option name="12.0" value="10" />
+      </options>
+    </parameter>
+    <parameter name="ZOOM_VISIBLE_I" type="uint8" default="0">
+      <description>Zoom visible camera</description>
+      <updates>
+        <update>ZOOM_THERMO_I</update>
+      </updates>
+      <options>
+        <option name="1.0" value="0" />
+        <option name="1.2" value="1" />
+        <option name="1.5" value="2" />
+        <option name="2.0" value="3" />
+        <option name="3.0" value="4" />
+        <option name="4.0" value="5" />
+        <option name="5.0" value="6" />
+        <option name="6.0" value="7" />
+        <option name="8.0" value="8" />
+        <option name="10.0" value="9" />
+      </options>
+    </parameter>
+    <parameter name="RANGE_MIN" type="float" default="20">
+      <description>Range minimum (°C)</description>
+    </parameter>
+    <parameter name="RANGE_MAX" type="float" default="40">
+      <description>Range maximum (°C)</description>
+    </parameter>
+    <parameter name="RANGE_WINDOW" type="float" default="30">
+      <description>Range window (°C)</description>
+    </parameter>
+    <parameter name="RANGE_CENTER" type="float" default="10">
+      <description>Range center (°C)</description>
+    </parameter>
+    <parameter name="ALARM" type="uint8" default="0">
+      <description>Alarm</description>
+      <options>
+        <option name="OFF" value="0">
+          <exclusions>
+            <exclude>COLOR_ABOVE</exclude>
+            <exclude>COLOR_BELOW</exclude>
+            <exclude>COLOR_BETWEEN</exclude>
+            <exclude>TEMP_ABOVE</exclude>
+            <exclude>TEMP_BELOW</exclude>
+          </exclusions>
+        </option>
+        <option name="Above" value="1">
+          <exclusions>
+            <exclusions>
+              <exclude>COLOR_BELOW</exclude>
+              <exclude>COLOR_BETWEEN</exclude>
+              <exclude>TEMP_BELOW</exclude>
+            </exclusions>
+          </exclusions>
+        </option>
+        <option name="Below" value="2">
+          <exclusions>
+            <exclusions>
+              <exclude>COLOR_ABOVE</exclude>
+              <exclude>COLOR_BETWEEN</exclude>
+              <exclude>TEMP_BELOW</exclude>
+            </exclusions>
+          </exclusions>
+        </option>
+        <option name="Between" value="3">
+          <exclusions>
+            <exclude>COLOR_ABOVE</exclude>
+            <exclude>COLOR_BELOW</exclude>
+          </exclusions>
+        </option>
+        <option name="Above and below" value="4">
+          <exclusions>
+            <exclude>COLOR_ABOVE</exclude>
+            <exclude>COLOR_BELOW</exclude>
+          </exclusions>
+        </option>
+      </options>
+    </parameter>
+    <parameter name="COLOR_ABOVE" type="uint8" default="0">
+      <description>Alarm color:above</description>
+      <options>
+        <option name="Red" value="0" />
+        <option name="Green" value="1" />
+        <option name="Blue" value="2" />
+      </options>
+    </parameter>
+    <parameter name="COLOR_BELOW" type="uint8" default="1">
+      <description>Alarm color:below</description>
+      <options>
+        <option name="Red" value="0" />
+        <option name="Green" value="1" />
+        <option name="Blue" value="2" />
+      </options>
+    </parameter>
+    <parameter name="COLOR_BETWEEN" type="uint8" default="2">
+      <description>Alarm color:between</description>
+      <options>
+        <option name="Red" value="0" />
+        <option name="Green" value="1" />
+        <option name="Blue" value="2" />
+      </options>
+    </parameter>
+    <parameter name="TEMP_ABOVE" type="float" default="10">
+      <description>Upper limit fot temperature alarm (°C)</description>
+    </parameter>
+    <parameter name="TEMP_BELOW" type="float" default="10">
+      <description>Lower limit fot temperature alarm (°C)</description>
+    </parameter>
+  </parameters>
+  <localization>
+  </localization>
+</mavlinkcamera>
